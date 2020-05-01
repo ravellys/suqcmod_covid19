@@ -96,7 +96,7 @@ def ajust_curvefit(days_mens,cumdata_cases,p0,bsup,binf):
                            bounds = (binf,bsup),
                            p0 = p0,
                            absolute_sigma = True)
-    return popt
+    return [popt,pcov]
 
 from scipy.optimize import minimize
 
@@ -161,7 +161,12 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta):
     bsup = [n1_0*1.01,18,n2_0*1.1, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
     binf = [n1_0*0.99,10,n2_0*0.9,-6,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6,10,4,nCo*0.5]
     
-    #p0 = ajust_curvefit(t,cumdata_cases,p0,bsup,binf)
+    p0,pcov = ajust_curvefit(t,cumdata_cases,p0,bsup,binf)
+    print(pcov)
+    perr = np.sqrt(np.diag(pcov))
+    Nstd = nstf(.95)
+    bsup = p0 + Nstd * perr
+    binf = p0 - Nstd * perr    
     popt = min_minimize(cum_deaths,cumdata_cases,sucq_solve,p0,t,bsup,binf)
     n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo = popt 
 
