@@ -83,7 +83,7 @@ def sucq(x,t,n1,r1,n2,r2,beta,gama1,gama2,eta,N):
 def sucq_solve(t,n1,r1,n2,r2,beta,gama1,gama2,eta,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo):
  
     SUCQ = odeint(sucq, [So,Uo,Qo,Co,R1o,R2o,Ro,0,nCo],t, args=(n1,r1,n2,r2,beta,gama1,gama2,eta,N))
-    return SUCQ[:,3].ravel()
+    return SUCQ[:,7].ravel()
 
 def SUCQ(t,n1,r1,n2,r2,beta,gama1,gama2,eta,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo):
  
@@ -154,19 +154,19 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta):
     
     #n1,r1,beta,gama1,N,So,Uo,Qo,Co,Ro
     
-    n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/150,14,1/50,-3,.15,.05,.15,2/100] # padrão [1/100,14,1/100,0,.15,.2,2/100]
+    n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/150,14,1/50,-3,.15,.05,.15,5/100] # padrão [1/100,14,1/100,0,.15,.2,2/100]
     So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-3,14,3*cumdata_cases[0]] # padrão [.9*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],0,14]
     p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,4,nCo] 
 
     bsup = [n1_0*1.01,18,n2_0*1.1, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
     binf = [n1_0*0.99,10,n2_0*0.9,-6,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6,10,4,nCo*0.5]
     
-    p0,pcov = ajust_curvefit(t,cumdata_cases,p0,bsup,binf)
-    print(pcov)
-    perr = np.sqrt(np.diag(pcov))
-    Nstd = nstf(.95)
-    bsup = p0 + Nstd * perr
-    binf = p0 - Nstd * perr    
+#    popt,pcov = ajust_curvefit(t,cum_deaths,p0,bsup,binf)
+#    perr = np.sqrt(np.diag(pcov))
+#    Nstd = nstf(.99)
+#    bsup = popt + Nstd * perr
+#    binf = popt - Nstd * perr 
+    
     popt = min_minimize(cum_deaths,cumdata_cases,sucq_solve,p0,t,bsup,binf)
     n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo = popt 
 
@@ -234,7 +234,7 @@ variavel = 'Cases'
 
 R = []
 estados = [ ]
-for i in files:
+for i in onlyfiles:
     FILE = i
     for i in população:
         if i[0] == FILE[9:-4]:
