@@ -1,3 +1,10 @@
-bsup = [ 1/99,2,1/20,3,0.50,.330,0.5, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9,3,2,6,nCo*2.0]
-binf = [1/101,0,1/30,1,0.01,.001,0.1,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,1,0,4,nCo*0.5]
+Caso 04: diminuição do Rt até maio, amplitude final de 2, distancia entre picos de 150 dias
+    
+    n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/100,1,1/150,2,.15,.05,.15,5/100] 
+    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-3,10,3*cumdata_cases[0]] 
+    p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,5,nCo] 
+
+    bsup = [n1_0*1.1,2,n2_0*1.1,3,0.50,.300,0.50, 15/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
+    binf = [n1_0*0.9,0,n2_0*0.9,1,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
+    
     

@@ -1,3 +1,9 @@
- bsup = [ 1/20,3, 1/20, 0,0.50,.600,1.00, 10/100, N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9,5,5,6,nCo*2.0]
- binf = [1/100,1,1/100,-3,0.01,.001,0.01,.01/100, N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,3,3,4,nCo*0.5]
+Redução gradual do Rt: Controle da epidemia em julho
+
+n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/100,0,1/50,0,.15,.05,.15,5/100] 
+So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],2,8,3*cumdata_cases[0]] 
+p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,5,nCo] 
+
+bsup = [n1_0*10,r1_0*1.0001,n2_0*1.5,r2_0*1.0001,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9,4,12,6,nCo*2.0]
+binf = [n1_0*.1,r1_0*0.9999,n2_0*0.5,r2_0*0.9999,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,0, 0,4,nCo*0.5]
     

@@ -55,21 +55,21 @@ def R_s(t,n1,r1,n2,r2,R1o,R2o):
     return (R1+R2)
  
 def sucq(x,t,n1,r1,n2,r2,beta,gama1,gama2,eta,N):
-    S=x[0]
-    U=x[1]
-    Q=x[2]
+    S = x[0]
+    U = x[1]
+    Q = x[2]
     C = x[3]
     R1 = x[4]
     R2 = x[5]
-    R = x[6]
+    R = (R1+R2)/2
     M = x[7]
     nC = x[8]
-    
+
     R1t = -n1*(R1-r1)  
     R2t = -n2*(R2-r2)
     Rt = (R1t+R2t)/2
     
-    #R = R_s(t,n1,r1,n2,r2,R1,R2)
+    R = R_s(t,n1,r1,n2,r2,R1,R2)
     alfa = (R*(gama1+gama2)/N)
     St = -alfa*U*S
     Ut = alfa*U*S - gama1*U - gama2*U
@@ -154,12 +154,12 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta):
     
     #n1,r1,beta,gama1,N,So,Uo,Qo,Co,Ro
     
-    n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/150,14,1/50,-3,.15,.05,.15,5/100] # padrão [1/100,14,1/100,0,.15,.2,2/100]
-    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-3,14,3*cumdata_cases[0]] # padrão [.9*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],0,14]
-    p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,4,nCo] 
+    n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/100,1,1/150,2,.15,.05,.15,5/100] # padrão [1/100,14,1/100,0,.15,.2,2/100]
+    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-3,10,3*cumdata_cases[0]] # padrão [.9*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],0,14]
+    p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,5,nCo] 
 
-    bsup = [n1_0*1.01,18,n2_0*1.1, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
-    binf = [n1_0*0.99,10,n2_0*0.9,-6,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6,10,4,nCo*0.5]
+    bsup = [n1_0*1.1,2,n2_0*1.1,3,0.50,.300,0.50, 15/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
+    binf = [n1_0*0.9,0,n2_0*0.9,1,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
     
 #    popt,pcov = ajust_curvefit(t,cum_deaths,p0,bsup,binf)
 #    perr = np.sqrt(np.diag(pcov))
@@ -170,7 +170,7 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta):
     popt = min_minimize(cum_deaths,cumdata_cases,sucq_solve,p0,t,bsup,binf)
     n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo = popt 
 
-    solution = SUCQ(t,n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,Ro,nCo)
+    solution = SUCQ(t,*popt)
 
     NSE = hy.nse(solution[:,3],cumdata_cases)
     RMSE = hy.rmse(solution[:,3],cumdata_cases)
@@ -206,12 +206,12 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta):
     estimativafutura_saída["Q"]=Cum_cases_estimated[:,2]
     estimativafutura_saída["I"] = Cum_cases_estimated[:,1]+Cum_cases_estimated[:,2]+Cum_cases_estimated[:,3]+Cum_cases_estimated[:,8]
     estimativafutura_saída["uC"] =Cum_cases_estimated[:,8]
-    estimativafutura_saída["Rt"]=Cum_cases_estimated[:,6]
-#    R = []
-#    for i in days_future:
-#        R.append(R_s(i,n1_0,r1_0,n2_0,r2_0,R1o,R2o))
-#    
-#    estimativafutura_saída["Rt"]= np.array(R)
+    #estimativafutura_saída["Rt"]=Cum_cases_estimated[:,6]
+    R = []
+    for i in days_future:
+        R.append(R_s(i,n1_0,r1_0,n2_0,r2_0,R1o,R2o))
+    
+    estimativafutura_saída["Rt"]= np.array(R)
     estimativafutura_saída["M"]=Cum_cases_estimated[:,7]
     estimativafutura_saída["date"] = date_future
     path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated"      
@@ -226,7 +226,7 @@ população = np.array(população)
 mypath = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_mensured"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-files = [ "COVID-19 SP.CSV"]
+files = [ "COVID-19 SC.CSV"]
 
 extrapolação = 365
 day_0 = '2020-02-26'
