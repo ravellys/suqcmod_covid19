@@ -23,14 +23,15 @@ def size_pop(FILE, população):
         if i[0] == FILE[9:-4]:
             return float(i[1])
 
-população = [["Espanha",46.72],["Itália",60.43],["SP",45.92],["MG",21.17],["RJ",17.26],["BA",14.87],["PR",11.43],["RS",11.37],["PE",9.6],["CE",9.13],["PA",8.6],["SC",7.16],["MA",7.08],["GO",7.02],["AM", 4.14],["ES",4.02],["PB",4.02],["RN",3.51],["MT",3.49],["AL", 3.4],["PI",3.3],["DF",3.1],["MS",2.8],["SE",2.3],["RO",1.78],["TO",1.6],["AC",0.9],["AP",0.85],["RR",0.61],["Brazil",210.2]]
-população = np.array(população)
+file_pop = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/populacao.csv"
+população = pd.read_csv(file_pop,header=0,sep =";")
+população = população.to_numpy()
 
 mypath = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated/'
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/daily_cases/"
 
-estados = ["COVID-19 Brazil.CSV", "COVID-19 SC.CSV", "COVID-19 PE.CSV", "COVID-19 SP.CSV", "COVID-19 AM.CSV"]
+estados = [ "COVID-19 Brazil.CSV", "COVID-19 SC.CSV", "COVID-19 PE.CSV", "COVID-19 SP.CSV", "COVID-19 AM.CSV"]
 
 inf = []
 
@@ -56,7 +57,7 @@ figure.set_title("percentage of the daily Deaths", family = "Serif", fontsize = 
 #figure.set_ylabel("percentage of the daily Cases", family = "Serif", fontsize = 16)
 figure.set_xlabel(" ")
 plt.show()
-fig.savefig(path_out + "all"+'deaths.png', dpi = 300,bbox_inches='tight',transparent = True)
+fig.savefig(path_out + "all"+'deaths.png', dpi = 300,bbox_inches='tight')
 
 inf = []
 for i in onlyfiles:

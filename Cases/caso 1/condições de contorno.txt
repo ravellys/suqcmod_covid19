@@ -1,9 +1,10 @@
 Caso 01: redução do Rt até junho seguido de aumento (diminuição do isolamento social)    
 
     n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/100,10,1/50,-4,.15,.05,.15,5/100] 
-    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-3,10,3*cumdata_cases[0]] 
-    p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,5,nCo] 
+    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-4,14,3*cumdata_cases[0]] 
+    p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,3,nCo] 
 
-    bsup = [n1_0*1.5,r1_0*1.5,n2_0*1.5, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
-    binf = [n1_0*0.5,r1_0*0.5,n2_0*0.5,-6,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
+    bsup = [n1_0*1.5,r1_0*1.1,n2_0*1.1, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
+    binf = [n1_0*0.5,r1_0*0.9,n2_0*0.9,-6,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
+
      

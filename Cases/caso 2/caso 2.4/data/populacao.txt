@@ -1,0 +1,216 @@
+GEO	pop
+Espanha	46.72
+ItÇ­lia	60.43
+SP	45.92
+MG	21.17
+RJ	17.26
+BA	14.87
+PR	11.43
+RS	11.37
+PE	9.6
+CE	9.13
+PA	8.6
+SC	7.16
+MA	7.08
+GO	7.02
+AM	4.14
+ES	4.02
+PB	4.02
+RN	3.51
+MT	3.49
+AL	3.4
+PI	3.3
+DF	3.1
+MS	2.8
+SE	2.3
+RO	1.78
+TO	1.6
+AC	0.9
+AP	0.85
+RR	0.61
+Brazil	210.2
+Recife	0.16
+JaboatÆo dos Guararapes	0.0702298
+Olinda	0.0392482
+Caruaru	0.0361118
+Petrolina	0.0349145
+Paulista	0.0331774
+Cabo de Santo Agostinho	0.0207048
+Camaragibe	0.0157828
+Garanhuns	0.0139788
+Vit¢ria de Santo AntÆo	0.0138757
+Igarassu	0.0117019
+SÆo Louren‡o da Mata	0.011323
+Santa Cruz do Capibaribe	0.0107937
+Abreu e Lima	0.009999
+Ipojuca	0.0096204
+Serra Talhada	0.008635
+Araripina	0.0084418
+Gravat 	0.0084074
+Carpina	0.0083641
+Goiana	0.0079758
+Belo Jardim	0.0076439
+Arcoverde	0.0074338
+Ouricuri	0.0069459
+Escada	0.0068875
+Pesqueira	0.0067395
+Surubim	0.0065089
+Palmares	0.006325
+Moreno	0.0062784
+Salgueiro	0.006093
+Bezerros	0.0060798
+SÆo Bento do Una	0.0059504
+Bu¡que	0.0058378
+Paudalho	0.0056506
+Limoeiro	0.005625
+Timba£ba	0.0053022
+Brejo da Madre de Deus	0.0050752
+Bom Conselho	0.0048554
+RibeirÆo	0.0047415
+Sirinha‚m	0.0045865
+Toritama	0.0045214
+µguas Belas	0.0043443
+Catende	0.0042892
+Barreiros	0.0042659
+Santa Maria da Boa Vista	0.0041931
+Lajedo	0.0040288
+Bom Jardim	0.0039184
+Alian‡a	0.0038386
+Bodoc¢	0.0038146
+Bonito	0.0038134
+Afogados da Ingazeira	0.0037259
+SÆo Caitano	0.0037245
+Cust¢dia	0.0037111
+µgua Preta	0.0036771
+Itamb‚	0.0036447
+Petrolƒndia	0.0036548
+Sertƒnia	0.0035907
+Cabrob¢	0.0034221
+SÆo Jos‚ do Belmonte	0.0033959
+SÆo Jos‚ do Egito	0.0033951
+JoÆo Alfredo	0.0033822
+Floresta	0.0032873
+Vicˆncia	0.0032643
+Nazar‚ da Mata	0.0032471
+Exu	0.0031825
+Gameleira	0.0031052
+Ipubi	0.0030854
+Gl¢ria do Goit 	0.0030604
+Trindade	0.0030521
+Ibimirim	0.0029235
+Passira	0.0028933
+Taquaritinga do Norte	0.0028775
+Caet‚s	0.0028739
+Tabira	0.0028534
+Tupanatinga	0.0027304
+Pombos	0.0027091
+Itapissuma	0.0026651
+Panelas	0.0026474
+Ita¡ba	0.0026349
+Sanhar¢	0.0026462
+Condado	0.0026421
+Ilha de Itamarac 	0.0026258
+Quipap 	0.0026037
+Tacaratu	0.0025765
+Lagoa Grande	0.0025601
+Macaparana	0.0025376
+Agrestina	0.0024885
+Canhotinho	0.0024804
+Cupira	0.0024107
+Orob¢	0.0023884
+Rio Formoso	0.0023535
+Tamandar‚	0.0023388
+Itaj 	0.0023247
+Altinho	0.0022972
+Amaraji	0.0022829
+SÆo JoÆo	0.0022793
+Flores	0.0022624
+Pedra	0.0022617
+Feira Nova	0.0022131
+Parnamirim	0.002201
+ChÆ Grande	0.0021698
+Manari	0.0021434
+Lagoa de Itaenga	0.0021429
+SÆo Joaquim do Monte	0.0021356
+SÆo Jos‚ da Coroa Grande	0.0021298
+Vertentes	0.0020731
+Bel‚m do SÆo Francisco	0.0020729
+Riacho das Almas	0.0020546
+Ara‡oiaba	0.0020524
+Cachoeirinha	0.002038
+Capoeiras	0.0020048
+Afrƒnio	0.0019635
+Carna¡ba	0.0019551
+Iati	0.0019197
+Serrita	0.0019165
+Dormentes	0.0018908
+Camocim de SÆo F‚lix	0.0018765
+Venturosa	0.0018482
+Correntes	0.0018207
+Lagoa do Carro	0.0018071
+SÆo Vicente Ferrer	0.0018018
+Jata£ba	0.001715
+Itaquitinga	0.0016955
+Lagoa dos Gatos	0.0016262
+Machados	0.0016088
+Joaquim Nabuco	0.0016023
+SÆo Benedito do Sul	0.0015895
+Salo 	0.0015843
+Frei Miguelinho	0.0015457
+Santa Cruz	0.0015398
+Mirandiba	0.001539
+Jurema	0.0015378
+Triunfo	0.0015254
+Primavera	0.0014966
+Oroc¢	0.0014991
+Jupi	0.0014836
+Jatob 	0.0014796
+Xex‚u	0.0014725
+Alagoinha	0.0014636
+Santa Filomena	0.0014477
+Barra de Guabiraba	0.0014385
+Casinhas	0.0014341
+Santa Maria do Cambuc 	0.0014137
+Tracunha‚m	0.0013769
+Itapetim	0.0013616
+ChÆ de Alegria	0.0013518
+Buenos Aires	0.0013155
+Lagoa do Ouro	0.0013145
+Carnaubeira da Penha	0.0012932
+Tacaimb¢	0.0012874
+Betƒnia	0.0012719
+Santa Cruz da Baixa Verde	0.0012592
+Cortˆs	0.0012578
+Iguaracy	0.0012228
+Ferreiros	0.0012123
+Bel‚m de Maria	0.0012073
+Santa Terezinha	0.0011815
+Cedro	0.0011807
+Jaqueira	0.0011656
+Paranatama	0.0011523
+Maraial	0.0011345
+Jucati	0.0011424
+Po‡Æo	0.0011302
+Moreilƒndia	0.001127
+Cal‡ado	0.0011053
+Angelim	0.001115
+Salgadinho	0.0010919
+Cumaru	0.0010906
+Terra Nova	0.0010096
+Sair‚	0.0009932
+Verdejante	0.0009534
+BrejÆo	0.0008993
+Camutanga	0.0008551
+Tuparetama	0.0008202
+Ibirajuba	0.0007762
+Palmeirina	0.0007693
+Vertente do L‚rio	0.0007618
+Brejinho	0.0007487
+Granito	0.0007486
+Terezinha	0.0007169
+Quixaba	0.0006813
+SolidÆo	0.0006007
+Calumbi	0.000575
+Itacuruba	0.0004918
+Ingazeira	0.0004548
+Fernando de Noronha	0.0003061

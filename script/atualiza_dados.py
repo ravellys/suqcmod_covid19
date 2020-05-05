@@ -10,7 +10,8 @@ def baixar_arquivo(url, endereco):
         print("Download finalizado. Arquivo salvo em: {}".format(endereco))
     else:
         resposta.raise_for_status()
-link = 'https://mobileapps.saude.gov.br/esus-vepi/files/unAFkcaNDeXajurGB7LChj8SgQYS2ptm/1d2b944e065c7304b2754cc386635e38_Download_COVID19_20200430.csv'
+        
+link = "https://mobileapps.saude.gov.br/esus-vepi/files/unAFkcaNDeXajurGB7LChj8SgQYS2ptm/74deed3f541017d97808e9142f43d413_Download_COVID19_20200504.csv"
 pasta = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/Richards_covid19/att.csv"
 baixar_arquivo(link,pasta)
 
