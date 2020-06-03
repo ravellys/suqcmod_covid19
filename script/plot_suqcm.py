@@ -13,7 +13,9 @@ mypath = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/suqcm/"
 
-for i in onlyfiles:
+estados = ["COVID-19 Recife.csv","COVID-19 Glória do Goitá.csv","COVID-19 Vitória de Santo Antão.csv"]
+
+for i in estados:
     fig,ax = plt.subplots(1, 1)
     estado = i
     df_simulated = pd.read_csv(mypath+estado,header = 0 , sep =";")

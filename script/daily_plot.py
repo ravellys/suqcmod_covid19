@@ -23,8 +23,8 @@ def size_pop(FILE, população):
         if i[0] == FILE[9:-4]:
             return float(i[1])
 
-file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.csv"
-população = pd.read_csv(file_pop,header=0,sep =";")
+file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.xlsx"
+população = pd.read_excel(file_pop,header = 0)
 população = população.to_numpy()
 
 mypath = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated/'
@@ -32,7 +32,7 @@ onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/daily_cases/"
 path_out_r = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/r_/"
 
-estados = [ "COVID-19 Brazil.CSV", "COVID-19 SC.CSV", "COVID-19 PE.CSV", "COVID-19 SP.CSV", "COVID-19 AM.CSV"]
+estados = ["COVID-19 Recife.csv","COVID-19 Glória do Goitá.csv","COVID-19 Vitória de Santo Antão.csv"]
 
 inf = []
 
@@ -108,7 +108,7 @@ for i in onlyfiles:
     figure.set_title("Rt", family = "Serif", fontsize = 18)
     #figure.set_ylabel("percentage of the daily Cases", family = "Serif", fontsize = 16)
     figure.set_xlabel(" ")
-    plt.close()
+    plt.show()
  
     fig.savefig(path_out_r + estado[9:-4]+'.png', dpi = 300,bbox_inches='tight')
 

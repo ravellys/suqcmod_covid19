@@ -44,5 +44,22 @@ for i in estados:
     
     df_.to_csv(path_out+ "COVID-19 "+ s_e + ".csv", sep = ";",index = False)
 
+df = pd.read_excel(file,header = 0)
+reg_estad_mun = np.array([['Nordeste', 'PE','Recife'],['Nordeste', 'PE','Glória do Goitá'],['Nordeste', 'PE','Vitória de Santo Antão']])
 
+for i in reg_estad_mun:
+    regiao, estado, mun = i
+    df2 = df[(df.regiao == regiao)&(df.estado == estado)&(df.municipio == mun)]
+
+    df_ = df2[['regiao','estado','municipio','data','casosAcumulado','obitosAcumulado']]
+    df_.columns = ['regiao','estado','municipio','DateRep','cum-Cases','cum-Deaths']
+    df_['Cases'] = desacum(df_['cum-Cases'].values)
+    df_['Deaths'] = desacum(df_['cum-Deaths'].values)
+    
+    if i[1] == -1:
+        s_e = 'Brazil'
+    else: 
+        s_e = i[2]    
+    
+    df_.to_csv(path_out+ "COVID-19 "+ s_e + ".csv", sep = ";",index = False)
    

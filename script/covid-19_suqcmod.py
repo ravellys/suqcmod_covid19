@@ -155,11 +155,11 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta, path_out):
     #n1,r1,beta,gama1,N,So,Uo,Qo,Co,Ro
     
     n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0=[1/100,10,1/50,-4,.15,.05,.15,5/100] 
-    So,Uo,Qo,Co,R1o,R2o,nCo = [.8*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-4,14,3*cumdata_cases[0]] 
+    So,Uo,Qo,Co,R1o,R2o,nCo = [.99*N,6*cumdata_cases[0],cumdata_cases[0],cumdata_cases[0],-4,14,3*cumdata_cases[0]] 
     p0 = [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,3,nCo] 
 
-    bsup = [n1_0*1.01,r1_0*1.1,n2_0*1.1, 0,0.50,.300,0.50, 10/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
-    binf = [n1_0*0.99,r1_0*0.9,n2_0*0.9,-5,0.01,.001,0.05,.01/100,N - 1,.5*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
+    bsup = [n1_0*1.01,r1_0*1.1,n2_0*1.1, 0,0.50,.300,0.50, 20/100,N + 1,   N,Uo*2.,Qo*2.0,Co+10**-9, 0,18,6,nCo*2.0]
+    binf = [n1_0*0.99,r1_0*0.9,n2_0*0.9,-5,0.01,.001,0.05,.01/100,N - 1,.9*N,Uo*.5,Qo*0.5,Co-10**-9,-6, 8,4,nCo*0.5]
 #    popt,pcov = ajust_curvefit(t,cum_deaths,p0,bsup,binf)
 #    perr = np.sqrt(np.diag(pcov))
 #    Nstd = nstf(.99)
@@ -219,8 +219,8 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta, path_out):
     return [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,nCo, NSE, RMSE, MARE,NSE_deaths, RMSE_deaths, MARE_deaths]
 
 #import mensured data
-file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.csv"
-população = pd.read_csv(file_pop,header=0,sep =";")
+file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.xlsx"
+população = pd.read_excel(file_pop,header = 0)
 população = população.to_numpy()
 
 mypath = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_mensured"
@@ -228,15 +228,14 @@ path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulat
 
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-files = ["COVID-19 SC.CSV"]
-
+files = ["COVID-19 Recife.csv","COVID-19 Glória do Goitá.csv","COVID-19 Vitória de Santo Antão.csv"]
 extrapolação = 365
 day_0 = '2020-02-26'
 variavel = 'Cases' 
 
 R = []
 estados = [ ]
-for i in onlyfiles:
+for i in files:
     
     FILE = i
     for i in população:
@@ -258,7 +257,6 @@ for i in range(len(estados)):
 
 #df_R = pd.DataFrame(R, columns = ["n1","R1","n2","R2","beta","gamma1","gamma2","eta","N","So","Uo","Qo","Co","R1o","R2o","nCo","NSE","RMSE","MARE","NSE_deaths","RMSE_deaths","MARE_deaths"])
 #df_R["Estado"] = estados
-#path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/"
 df_R.to_csv(path_out+'/metrics.csv',sep=";",index = False)
 
 def bar_plt(atributo, title_name,df_R,logscale):
