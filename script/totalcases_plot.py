@@ -276,7 +276,7 @@ for i in onlyfiles:
                           grid = True,rot = 90,figsize= (10,8))
     
     figure2 = df_plot2.plot(ax = ax,kind = "line", x = "datetime", y = estado[9:-4],
-                             style = 'o-',grid = True,rot = 90,figsize= (10,8), logy = True)
+                             style = 'o-',grid = True,rot = 90,figsize= (10,8))
       
     figure.yaxis.set_major_formatter(FuncFormatter(format_func))
     
