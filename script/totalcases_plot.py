@@ -24,7 +24,7 @@ def bar_plt(atributo, title_name,df,logscale):
         ax.annotate(val, ((b.x0 + b.x1)/2, b.y1 ), fontsize = 14,ha='center', va='top',rotation = 90)
 
     plt.show()
-    path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/"
+    path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/"
     fig.savefig(path_out+atributo+'_barplot.png', dpi = 300,bbox_inches='tight',transparent = True)
 
 
@@ -44,17 +44,17 @@ def size_pop(FILE, população):
         if i[0] == FILE[9:-4]:
             return float(i[1])
 
-file_pop = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/populacao.csv"
+file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.csv"
 população = pd.read_csv(file_pop,header=0,sep =";")
 população = população.to_numpy()
 
-mypath = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated/'
-mypath2 = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_mensured/'
-mypath3 = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated_ant/'
+mypath = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated/'
+mypath2 = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_mensured/'
+mypath3 = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated_ant/'
 
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/cum_cases/"
-path_out_deaths = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/cum_deaths/"
+path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/cum_cases/"
+path_out_deaths = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/cum_deaths/"
 
 
 estados = [ "COVID-19 Brazil.CSV", "COVID-19 SC.CSV", "COVID-19 PE.CSV", "COVID-19 SP.CSV", "COVID-19 AM.CSV"]
@@ -81,13 +81,13 @@ for i in estados:
     
     max_cases = max(df_plot["current trend"])
 
-    figure2 = df_plot2.plot(ax = ax,kind = "line", x = "datetime", y = estado[9:-4],
+    figure2 = df_plot2.plot(ax = ax, kind = "line", x = "datetime", y = estado[9:-4],
                              style = Color[cont]+'o-',grid = True,rot = 90,figsize= (10,8), logy = True)
     
-    figure = df_plot.plot(ax =ax,kind = "line", x = "datetime", y = 'current trend',
+    figure = df_plot.plot(ax =ax, kind = "line", x = "datetime", y = 'current trend',
                              color = Color[cont],grid = True,rot = 90,figsize= (10,8), 
                              logy = True, ylim = (1,10**8))
-    cont =cont +1
+    cont = cont + 1
 
     figure.yaxis.set_major_formatter(FuncFormatter(format_func))
     
@@ -147,12 +147,14 @@ for i in onlyfiles:
     
     inf.append([estado[9:-4],max_cases])
     
-    figure = df_plot.plot(ax =ax,kind = "line", x = "datetime", y = estado[9:-4], legend = None,
+    
+    figure2 = df_plot2.plot(ax = ax, kind = "line", x = "datetime", y = estado[9:-4],
+                             style = 'o-',grid = True,rot = 90,figsize= (10,8))
+    
+    figure = df_plot.plot(ax = ax, x = "datetime", y = estado[9:-4], legend = None,
                              grid = True,rot = 90,figsize= (10,8))
-    
-    figure2 = df_plot2.plot(ax = ax,kind = "scatter", x = "datetime", y = estado[9:-4],
-                             color = Color[cont],grid = True,rot = 90,figsize= (10,8))
-    
+ 
+  
     figure.yaxis.set_major_formatter(FuncFormatter(format_func))
     
     val = format_func(max_cases)        
@@ -178,10 +180,9 @@ for i in range(len(inf)):
 
 df_inf = pd.DataFrame(inf[:,0], columns = ["Estado"])
 df_inf["cases_7d"] = np.array(inf_num)
-path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/inf/"
+path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/inf/"
 df_inf.to_csv(path_out+"inf_7d.csv",sep=";")
 bar_plt(atributo = "cases_7d", title_name = "Short-term predict (7days)", df = df_inf, logscale = True)
-
 
 cont = 0
 fig,ax = plt.subplots(1, 1)
@@ -270,14 +271,13 @@ for i in onlyfiles:
     
     inf.append([estado[9:-4],max_cases])
     
-    
-    
-    figure = df_plot.plot(ax =ax,kind = "line", x = "datetime", y = estado[9:-4], legend = None,
+      
+    figure = df_plot.plot(ax =ax, x = "datetime", y = estado[9:-4], legend = None,
                           grid = True,rot = 90,figsize= (10,8))
     
-    figure2 = df_plot2.plot(ax = ax,kind = "scatter", x = "datetime", y = estado[9:-4],
-                            color = 'black',grid = True,rot = 90,figsize= (10,8))
-    
+    figure2 = df_plot2.plot(ax = ax,kind = "line", x = "datetime", y = estado[9:-4],
+                             style = 'o-',grid = True,rot = 90,figsize= (10,8), logy = True)
+      
     figure.yaxis.set_major_formatter(FuncFormatter(format_func))
     
     val = format_func(max_cases)        
@@ -303,7 +303,7 @@ for i in range(len(inf)):
 
 df_inf = pd.DataFrame(inf[:,0], columns = ["Estado"])
 df_inf["deaths_7d"] = np.array(inf_num)
-path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/inf/"
+path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/inf/"
 df_inf.to_csv(path_out+"inf_deaths_7d.csv",sep=";")
 bar_plt(atributo = "deaths_7d", title_name = "Short-term deaths predict (7days)", df = df_inf, logscale = True)
    

@@ -9,9 +9,9 @@ def format_func(value, tick_number=None):
     value = round(value / 1000**num_thousands, 2)
     return f'{value:g}'+' KMGTPEZY'[num_thousands]
 
-mypath = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated/'
+mypath = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated/'
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/suqcm/"
+path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/suqcm/"
 
 for i in onlyfiles:
     fig,ax = plt.subplots(1, 1)

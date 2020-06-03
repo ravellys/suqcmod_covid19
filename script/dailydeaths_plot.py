@@ -23,13 +23,13 @@ def size_pop(FILE, população):
         if i[0] == FILE[9:-4]:
             return float(i[1])
 
-file_pop = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/populacao.csv"
+file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.csv"
 população = pd.read_csv(file_pop,header=0,sep =";")
 população = população.to_numpy()
 
-mypath = 'C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated/'
+mypath = 'C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated/'
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/daily_cases/"
+path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/daily_cases/"
 
 estados = [ "COVID-19 Brazil.CSV", "COVID-19 SC.CSV", "COVID-19 PE.CSV", "COVID-19 SP.CSV", "COVID-19 AM.CSV"]
 
@@ -96,7 +96,7 @@ for i in onlyfiles:
 inf = np.array(inf)
 
 df_inf = pd.DataFrame(inf, columns = ["Estado","max_cases","diamax","datamax","totaldeaths"])
-path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/inf/"
+path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/inf/"
 df_inf.to_csv(path_out+"inf_max_day.csv",sep=";")
 
 def bar_plt(atributo, title_name,df,logscale):
@@ -115,7 +115,7 @@ def bar_plt(atributo, title_name,df,logscale):
         ax.annotate(val, ((b.x0 + b.x1)/2, b.y1 + 0.25/100), fontsize = 14,ha='center', va='top',rotation = 90)
 
     plt.show()
-    path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/"
+    path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/"
     fig.savefig(path_out+atributo+'_barplot.png', dpi = 300,bbox_inches='tight',transparent = True)
 
 bar_plt(atributo = "diamax", title_name = "Number of days between start of adjustment \nand the peak of the deaths", df = df_inf, logscale = False)

@@ -219,12 +219,12 @@ def Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta, path_out):
     return [n1_0,r1_0,n2_0,r2_0,beta_0,gama1_0,gama2_0,eta_0,N,So,Uo,Qo,Co,R1o,R2o,nCo, NSE, RMSE, MARE,NSE_deaths, RMSE_deaths, MARE_deaths]
 
 #import mensured data
-file_pop = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/populacao.csv"
+file_pop = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/populacao.csv"
 população = pd.read_csv(file_pop,header=0,sep =";")
 população = população.to_numpy()
 
-mypath = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_mensured"
-path_out = "C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/data/data_simulated"      
+mypath = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_mensured"
+path_out = "C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/data/data_simulated"      
 
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
@@ -236,7 +236,7 @@ variavel = 'Cases'
 
 R = []
 estados = [ ]
-for i in files:
+for i in onlyfiles:
     
     FILE = i
     for i in população:
@@ -247,7 +247,7 @@ for i in files:
     R.append(Ajust_(FILE,pop,extrapolação,day_0,variavel,pasta = mypath,path_out = path_out))       
 R = np.array(R)
 estados = np.array(estados)
-path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/"
+path_out ='C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/'
 
 df_R = pd.read_csv(path_out+'/metrics.csv',header = 0,sep=";")
 
@@ -277,7 +277,7 @@ def bar_plt(atributo, title_name,df_R,logscale):
         ax.annotate(val, ((b.x0 + b.x1)/2, b.y1), fontsize = 14,ha='center', va='top',rotation = 90)
 
     plt.show()
-    path_out ="C:/Users/ravel/OneDrive/Área de Trabalho/DataScientist/sklearn/COVID-19/CasosPorEstado/suqcmod_covid19/imagens/"
+    path_out ="C:/Users/ravellys/Documents/GitHub/suqcmod_covid19/imagens/"
     fig.savefig(path_out+atributo+'_barplot.png', dpi = 300,bbox_inches='tight',transparent = True)
 
 df_R = pd.read_csv(path_out+'/metrics.csv',header = 0,sep=";")
